@@ -24,6 +24,8 @@ Plug 'scrooloose/nerdtree'
 " ////////////////////////////////////////////////////////////////////////////
 "
 Plug 'yaegassy/coc-nginx', {'do': 'yarn install --frozen-lockfile'}
+Plug 'chr4/nginx.vim'
+
 " ////////////////////////////////////////////////////////////////////////////
 " Text Manipulation
 " ////////////////////////////////////////////////////////////////////////////
@@ -157,6 +159,7 @@ let g:auto_save = 0
 nnoremap j gj
 nnoremap k gk
 nnoremap J <Nop>
+tnoremap <ESC>  <C-\><C-n><CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERD TREE CONFIG 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -166,7 +169,7 @@ nnoremap <LEADER><Tab> :NERDTreeToggle<CR>
 " COPY and PASTE CONFIG 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('innamedplus')
-	set clipboard=unnamed,unnamedplus
+set clipboard=unnamed,unnamedplus
 endif
 
 noremap yy "+y<cr>
@@ -174,8 +177,8 @@ noremap <LEADER>p "+gp<cr>
 noremap xx "+x<cr>
 
 if has('macunix')
- vmap <c-x> :!pbcopy<cr>
- vmap <c-c> :w !pbcopy<cr><cr>
+vmap <c-x> :!pbcopy<cr>
+vmap <c-c> :w !pbcopy<cr><cr>
 endif
 
 " OPEN SPLITS
@@ -215,7 +218,7 @@ map <S-h>  :bprevious<CR>
 map <C-o> :CocCommand explorer<CR>
 
 " Quick close buffers
-nmap <C-x> :Bdelete<CR>
+nmap <S-x> :Bdelete<CR>
 
 " QUICK JUMP BUFFERS USING NUMBER
 nmap <leader>b :b 
