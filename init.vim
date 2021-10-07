@@ -36,8 +36,24 @@ Plug 'alvan/vim-closetag'
 Plug '907th/vim-auto-save'
 Plug 'easymotion/vim-easymotion'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+"//////////////////////////////////////////////////////////////////////////////
+"Rescript
+"/////////////////////////////////////////////////////////////////////////////
+Plug 'rescript-lang/vim-rescript'
+
+autocmd FileType rescript nnoremap <silent> <buffer> <leader>r :RescriptFormat<CR>
+autocmd FileType rescript nnoremap <silent> <buffer> <leader>t :RescriptTypeHint<CR>
+autocmd FileType rescript nnoremap <silent> <buffer> <leader>b :RescriptBuild<CR>
+autocmd FileType rescript nnoremap <silent> <buffer> gd :RescriptJumpToDefinition<CR>
 
 
+" Hooking up the ReScript autocomplete function
+set omnifunc=rescript#Complete
+
+" When preview is enabled, omnicomplete will display additional
+" information for a selected item
+set completeopt+=preview
 
 " ////////////////////////////////////////////////////////////////////////////
 " Golang Pluggin 
@@ -215,7 +231,6 @@ map <S-Right> :bnext<CR>
 map <S-Left>  :bprevious<CR>
 map <S-l> :bnext<CR>
 map <S-h>  :bprevious<CR>
-map <C-o> :CocCommand explorer<CR>
 
 " Quick close buffers
 nmap <S-x> :Bdelete<CR>
@@ -241,7 +256,7 @@ set t_Co=256
 set background=light
 
 " for mirage version of theme
-let ayucolor="mirage" 
+let ayucolor="dark" 
 
 "Gruvbox settings
 let g:gruvbox_contrast_dark='medium'
@@ -249,7 +264,7 @@ let g:gruvbox_contrast_light='hard'
 let g:gruvbox_italic=1
 let g:gruvbox_sign_column='bg1'
 
-colorscheme ayu
+colorscheme ayu 
 
 "config bufferline integration with airline
 let g:airline_theme='onehalfdark'
