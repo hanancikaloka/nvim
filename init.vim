@@ -18,7 +18,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'yuki-ycino/fzf-preview.vim', { 'branch': 'release', 'do': ':UpdateRemotePlugins'  }
 Plug 'moll/vim-bbye'
 Plug 'scrooloose/nerdtree'
-
+Plug 'hrsh7th/nvim-cmp'
 " ////////////////////////////////////////////////////////////////////////////
 " Nginx PLUGIN 
 " ////////////////////////////////////////////////////////////////////////////
@@ -37,11 +37,12 @@ Plug '907th/vim-auto-save'
 Plug 'easymotion/vim-easymotion'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'terryma/vim-multiple-cursors'
+
 "//////////////////////////////////////////////////////////////////////////////
 "Rescript
 "/////////////////////////////////////////////////////////////////////////////
 Plug 'rescript-lang/vim-rescript'
-
 autocmd FileType rescript nnoremap <silent> <buffer> <leader>r :RescriptFormat<CR>
 autocmd FileType rescript nnoremap <silent> <buffer> <leader>t :RescriptTypeHint<CR>
 autocmd FileType rescript nnoremap <silent> <buffer> <leader>b :RescriptBuild<CR>
@@ -118,7 +119,7 @@ Plug 'pineapplegiant/spaceduck'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'ayu-theme/ayu-vim' " or other package manager
-
+Plug 'kwsp/halcyon-neovim'
 " ////////////////////////////////////////////////////////////////////////////
 " Visual Helpers & Magic
 " ////////////////////////////////////////////////////////////////////////////
@@ -162,7 +163,7 @@ set signcolumn=yes
 set redrawtime=100000
 filetype plugin on
 syntax on
-set cc=80,120
+
 
 " USE SPACE AS LEADER
 let mapleader = " "
@@ -264,7 +265,7 @@ let g:gruvbox_contrast_light='hard'
 let g:gruvbox_italic=1
 let g:gruvbox_sign_column='bg1'
 
-colorscheme ayu 
+colorscheme halcyon 
 
 "config bufferline integration with airline
 let g:airline_theme='onehalfdark'
@@ -437,11 +438,15 @@ omap af <Plug>(coc-funcobj-a)
 " Use <TAB> for selections ranges.
 " NOTE: Requires 'textDocument/selectionRange' support from the language server.
 " coc-tsserver, coc-python are the examples of servers that support it.
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
+
+" Format Using Prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
